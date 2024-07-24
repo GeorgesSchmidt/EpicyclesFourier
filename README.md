@@ -30,5 +30,5 @@ En changeant l'ordre, c'est-à-dire le nombre de coeficients, on risque de trop 
 
 A essayer avec un ordre plus petit (ex 3). 
 
-
+![Contours Image](epicycles.png)
 

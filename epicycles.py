@@ -19,6 +19,7 @@ class Epicycles(Contours):
         print("datas", len(self.x_list))
         
         self.calcul_coeficients()
+        self.plot_epicycles()
         self.showEpicycles()
         
     def f(self, t, t_list, x_list, y_list):
@@ -138,6 +139,42 @@ class Epicycles(Contours):
         anim = animation.FuncAnimation(fig, self.make_frame, frames=self.number, fargs=(time, self.c), interval=100)
         ax.invert_yaxis()
         plt.show()
+        
+    def plot_epicycles(self):
+        vx = []
+        vy = []
+        
+        for t in self.t_list:
+            exp_term = np.array([np.exp(n * t * 1j) for n in range(-self.order, self.order + 1)])
+            coeffs = self.c*exp_term
+            coeffs = self.sort_coeff(coeffs)
+            x_coeffs = np.real(coeffs)
+            y_coeffs = np.imag(coeffs)
+            center_x, center_y = 0, 0
+            for i, (x, y) in enumerate(zip(x_coeffs, y_coeffs)):
+                center_x += x
+                center_y += y
+            vx.append(center_x)
+            vy.append(center_y)
+
+        fig = plt.figure(figsize=(15, 5))
+        ax1 = fig.add_subplot(1, 2, 1)
+        ax1.plot(self.x_list, self.y_list, 'b')
+        ax1.plot(vx, vy, 'r')
+        ax1.invert_yaxis()
+
+        ax2 = fig.add_subplot(2, 2, 2)
+        ax2.plot(self.x_list, 'b')
+        ax2.plot(vx, 'r')
+        ax2.set_title('variation en x')
+
+        ax3 = fig.add_subplot(2, 2, 4)
+        ax3.plot(self.y_list, 'b')
+        ax3.plot(vy, 'r')
+        ax3.set_title('variation en y')
+        plt.show()
+        #plt.savefig('epicycles.png')
+        
         
 if __name__=='__main__':
     path = 'pi.jpg'
