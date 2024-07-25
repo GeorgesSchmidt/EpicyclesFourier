@@ -65,7 +65,7 @@ Pour autant, avec moins de coeficients (jusqu'à une ceraine limite), la courbe 
 
 ![Animation epicyles](Pictures/animation_readme_fft.gif)
 
-# Utiliser une 2D-DFT : utilisation d'une transformée de Fourier sur des images. 
+# Utiliser une 2D-DFT sur des images : le module imageFourier.py. 
 
 Ce type de modélisation est très utilisée en traitement d'image. Elle permet de calculer la transformée de Fourier sur une matrice. 
 
