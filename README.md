@@ -59,6 +59,31 @@ Pour autant, avec moins de coeficients (jusqu'à une ceraine limite), la courbe 
 
 ![Animation epicyles](Pictures/animation_readme_fft.gif)
 
+# Utiliser une 2D-DFT : utilisation d'une transformée de Fourier sur des images. 
+
+Ce type de modélisation est très utilisée en traitement d'image. Elle permet de calculer la transformée de Fourier sur une matrice. 
+
+L'image a fournir est donc une image en noir et blanc. 
+
+Dans notre cas, l'image ne contient que des pixels noirs ou des pixels blancs. 
+
+En appliquant une 2D-DFT, fournie par OpenCv, on calcule l'image spectrale, représentée ici en 3D qui est la représentation des amplitudes des coeficients de Fourier trouvés. 
+
+On applique alors un masque, représenté par un rectangle noir, d'une dimension donnée, où tous les coeficients en dehors de ce masque seront nuls. 
+
+Si le masque est aussi grand que l'image :
+
+![Contours Image](<Pictures/image_DFT_[50, 50].png>)
+
+Si le masque est deux fois plus petit :
+
+![alt text](<Pictures/image_DFT_[25, 25].png>)
+
+Si le masque est 10 fois plus petit :
+
+![alt text](<Pictures/image_DFT_[5, 5].png>)
+
+
 
 
 
