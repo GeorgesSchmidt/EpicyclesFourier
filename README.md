@@ -1,6 +1,10 @@
 # EpicyclesFourier
 
-Code pour dessiner les épicycles de Fourier. 
+Code pour dessiner les épicycles de Fourier et implémenter les transformées de Fourier en Python. 
+
+Ce repo ne présente que le code pour implémenter diverses approches des transformées de Fourier en utilisant les modules scipy et numpy. 
+
+Il ne reprend aucun rappel mathématique. 
 
 ### LE README PRESENTE ICI COMPORTE DES ANIMATIONS GIF. MERCI DE PATIENTER SON CHARGEMENT, CELA PEUX PRENDRE QUELQUES SECONDES ###
 
