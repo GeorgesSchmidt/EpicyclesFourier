@@ -45,3 +45,22 @@ Le programme lance ensuite l'animation matplotlib pour observer les épicycles.
 
 ![Animation epicyles](Pictures/animation_readme.gif)
 
+# Utiliser une FFT : le module transformeeFourier.py
+
+Si l'objectif du programme est d'approcher mathématiquement le contour, la Fast Fourier Transform (FFT) est plus appropriée car beaucoup plus rapide dans le calcul des coeficients. 
+
+Pour calculer une FFT, scipy propose la méthode fft pour calculer les coeficients de Fourier et ifft pour calculer l'inverse et donc récupérer la courbe à partir des coeficients calculés. 
+
+Les coeficients calculés sont des nombres complexes. On peut alors afficher leurs amplitudes et proposer un seuil sous lequel tous les coeficients seront nuls. 
+
+Avec autant de coeficients que de points, la courbe résultante est parfaitement collée à la courbe originale. 
+
+Pour autant, avec moins de coeficients (jusqu'à une ceraine limite), la courbe résultante est toujours représentative de la courbe originale. 
+
+![Animation epicyles](Pictures/animation_readme_fft.gif)
+
+
+
+
+
+
