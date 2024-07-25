@@ -2,6 +2,8 @@
 
 Code pour dessiner les épicycles de Fourier. 
 
+### LE README PRESENTE ICI COMPORTE DES ANIMATIONS GIF. MERCI DE PATIENTER SON CHARGEMENT, CELA PEUX PRENDRE QUELQUES SECONDES ###
+
 # installation. 
 
 Dans un environnement virtuel :  
