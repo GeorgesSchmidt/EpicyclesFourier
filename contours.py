@@ -33,8 +33,6 @@ class Contours:
         color = (255, 255, 255)
         thick = 2
         cv2.putText(img, text, p, font, font_scale, color, thick)
-
-        
         
     def interpolate_contour(self):
         x = [v[0] for [v] in self.contour]

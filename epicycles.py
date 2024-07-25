@@ -139,6 +139,8 @@ class Epicycles(Contours):
         anim = animation.FuncAnimation(fig, self.make_frame, frames=self.number, fargs=(time, self.c), interval=100)
         ax.invert_yaxis()
         plt.show()
+        #anim.save('Anim-epicycles.mp4', writer='ffmpeg')
+        
         
     def plot_epicycles(self):
         vx = []
@@ -163,17 +165,20 @@ class Epicycles(Contours):
         ax1.plot(vx, vy, 'r')
         ax1.invert_yaxis()
 
+        angle = np.linspace(0, tau, len(self.x_list))
         ax2 = fig.add_subplot(2, 2, 2)
-        ax2.plot(self.x_list, 'b')
-        ax2.plot(vx, 'r')
+        ax2.plot(angle, self.x_list, 'b')
+        ax2.plot(angle, vx, 'r')
         ax2.set_title('variation en x')
 
         ax3 = fig.add_subplot(2, 2, 4)
-        ax3.plot(self.y_list, 'b')
-        ax3.plot(vy, 'r')
+        ax3.plot(angle, self.y_list, 'b')
+        ax3.plot(angle, vy, 'r')
         ax3.set_title('variation en y')
-        plt.show()
-        #plt.savefig('epicycles.png')
+        ax3.set_xlabel(r'Angle (radians) jusqu\'à $2\pi$')
+        #plt.show()
+        plt.savefig('epicycles.png')
+        
         
         
 if __name__=='__main__':
