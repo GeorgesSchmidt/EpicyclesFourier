@@ -2,10 +2,13 @@ import cv2
 import matplotlib.pyplot as plt
 from math import tau
 import numpy as np
+import argparse
 
 from Contour.getContour import Contour
 from Contour.interpolate import Interpolate
 from Contour.lissage import Liss
+
+
 
 class ShowCont:
     def __init__(self, Cont) -> None:
@@ -36,16 +39,27 @@ class ShowCont:
         
         plt.show()
         
-if __name__=='__main__':
-    path = 'Pictures/pi.jpg'
+def main(path):
     cont = Contour(path)
     ShowCont(cont)
+    
     interp = Interpolate(number=200)
     cont.x_list = interp.interpol(cont.x_list)
     cont.y_list = interp.interpol(cont.y_list)
     ShowCont(cont)
+    
     liss = Liss(order=5)
     cont.x_list = liss.cyclic_moving_av(cont.x_list)
     cont.y_list = liss.cyclic_moving_av(cont.y_list)
     ShowCont(cont)
+    
+        
+if __name__=='__main__':
+    path = 'Pictures/pi.jpg'
+    parser = argparse.ArgumentParser(description='Process image contours.')
+    parser.add_argument('path', type=str, default=path, help='Chemin vers le fichier image')
+    args = parser.parse_args()
+    main(args.path)
+    
+    
     
