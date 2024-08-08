@@ -89,6 +89,22 @@ Si le masque est 10 fois plus petit :
 
 ![alt text](<Pictures/image_DFT_[5, 5].png>)
 
+# A quoi ca sert ?  
+
+En reduisant le nombre de coefficients, on lisse la courbe. 
+
+Pour reduire le nombre de coefficients on calcule leurs amplitudes et on mets a zero ceux dont l'amplitude est inférieur a un certain seuil. 
+
+Avec ce nombre reduit de coefficients on calcule l'inverse. 
+
+et on retrouve la courbe ou l'image avec beaucoup moins de donnees qu'avec la donnée originale. 
+
+C'est l'algorithme qui est employe pour compresser des fichiers. 
+
+Limage jpeg est construite comme cela : en effet si l'on zoume sur l'arriere plan d'une image jpeg on s'apercevra du meme flou que notre image du nombre pi. 
+
+
+
 
 
 
