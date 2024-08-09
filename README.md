@@ -101,15 +101,7 @@ et on retrouve la courbe ou l'image avec beaucoup moins de donnees qu'avec la do
 
 C'est l'algorithme qui est employe pour compresser des fichiers. 
 
-Limage jpeg est construite comme cela : en effet si l'on zoume sur l'arriere plan d'une image jpeg on s'apercevra du meme flou que notre image du nombre pi. 
-
-# L'interet des epicycles. 
-
-Outre le fait de publier des videoa sur Youtube si l'on affiche le résultat de la transformee en 3D on s'apercoit que l'image eat cree par un ensemble de courbes oscillantes :une pour chaque rangee de pixela. 
-
-ces courbes presentes de faibles oscillations (basses frequences) lorsque le fond est uni et ume forte oscillation (haute fréquence) au niveau du contour. 
-
-
+Limage jpeg est construite comme cela : en effet si l'on zoume sur l'arriere plan d'une image jpeg on s'apercevra du meme flou que notre image du nombre . 
 
 
 
