@@ -101,7 +101,7 @@ et on retrouve la courbe ou l'image avec beaucoup moins de donnees qu'avec la do
 
 C'est l'algorithme qui est employe pour compresser des fichiers. 
 
-Limage jpeg est construite comme cela : en effet si l'on zoume sur l'arriere plan d'une image jpeg on s'apercevra du meme flou que notre image du nombre . 
+Limage jpeg est construite comme cela : en effet si l'on zoume sur l'arriere plan d'une image jpeg on s'apercevra du meme flou que notre image du nombre pi. 
 
 
 
