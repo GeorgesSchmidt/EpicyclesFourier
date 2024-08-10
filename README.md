@@ -39,7 +39,17 @@ On remarque que le contour présente plus de 5000 points, ce qui peut ralentir l
 ## le module interolate.py. 
 
 Ce module permet de donner un nombre plus petit (ou plus grand) de points dans le contour. 
-Par défaut, on donne 200 points, ce qui donne des temps de calculs résonnables. 
+Par défaut, on donne 200 points, ce qui donne des temps de calculs résonnables tout en ayant un nombre de points suffisant pour garder la forme.
+
+## le module liss.py. 
+
+ce module permet de lisser un contour. 
+
+meme si les tramsformees de Fourier lissent elles aussi les contours 
+
+ce lissage préalable aide a la compréhension de la décomposition des coordonnées. 
+
+
 
 
 
