@@ -89,19 +89,20 @@ If the mask is 10 times smaller:
 
 ![alt text](<Pictures/image_DFT_[5, 5].png>)
 
-# A quoi ca sert ?  
+# What is it used for?
 
-En reduisant le nombre de coefficients, on lisse la courbe. 
+By reducing the number of coefficients, we smooth the curve.
 
-Pour reduire le nombre de coefficients on calcule leurs amplitudes et on mets a zero ceux dont l'amplitude est inférieur a un certain seuil. 
+To reduce the number of coefficients, we calculate their amplitudes and set to zero those with amplitudes below a certain threshold.
 
-Avec ce nombre reduit de coefficients on calcule l'inverse. 
+With this reduced number of coefficients, we compute the inverse.
 
-et on retrouve la courbe ou l'image avec beaucoup moins de donnees qu'avec la donnée originale. 
+This allows us to reconstruct the curve or image with much less data than the original.
 
-C'est l'algorithme qui est employe pour compresser des fichiers. 
+This is the algorithm used to compress files.
 
-Limage jpeg est construite comme cela : en effet si l'on zoume sur l'arriere plan d'une image jpeg on s'apercevra du meme flou que notre image du nombre pi. 
+A JPEG image is constructed this way: in fact, if you zoom in on the background of a JPEG image, you'll notice the same blur as in our image of the number π.
+
 
 
 
