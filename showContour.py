@@ -11,9 +11,10 @@ from Contour.lissage import Liss
 
 
 class ShowCont:
-    def __init__(self, Cont) -> None:
+    def __init__(self, Cont, title='') -> None:
         self.x_list = Cont.x_list
         self.y_list = Cont.y_list
+        self.title = title
         self.angle = np.linspace(0, tau, len(self.x_list))
         self.plot()
         
@@ -37,21 +38,34 @@ class ShowCont:
         ax3.set_title(f'contour : {len(self.x_list)} points')
         ax3.invert_yaxis()
         
-        plt.show()
+        plt.savefig(self.title)
+        
+    def save_values(self):
+        title = 'Datas/x_list.npy'
+        np.save(title, self.x_list)
+        title = 'Datas/y_list.npy'
+        np.save(title, self.y_list)
         
 def main(path):
     cont = Contour(path)
-    ShowCont(cont)
+    title = 'Pictures/contour_original.png'
+    ShowCont(cont, title=title)
     
     interp = Interpolate(number=200)
     cont.x_list = interp.interpol(cont.x_list)
     cont.y_list = interp.interpol(cont.y_list)
-    ShowCont(cont)
+    title = 'Pictures/contour_interpol.png'
+    ShowCont(cont, title=title)
     
     liss = Liss(order=5)
     cont.x_list = liss.cyclic_moving_av(cont.x_list)
     cont.y_list = liss.cyclic_moving_av(cont.y_list)
-    ShowCont(cont)
+    title = 'Pictures/contour_liss.png'
+    s = ShowCont(cont, title=title)
+    
+    s.save_values()
+    
+    
     
         
 if __name__=='__main__':

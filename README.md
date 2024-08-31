@@ -4,7 +4,7 @@ Ce repo contient les codes pour utiliser différents codes proposés par les bib
 
 Sur environnement virtuel :  
 
-`pip install opencv-python matplotlib scipy`
+`pip install opencv-python matplotlib scipy symfit`
 
 Pour les tests :
 
@@ -35,11 +35,76 @@ Il décompose ensuite ce contour en x et en y par rapport au centre du contour.
 
 On remarque que le contour présente plus de 5000 points, ce qui peut ralentir les calculs des transformées de Fourier. 
 
+![Contours Image](Pictures/contour_original.png)
+
 
 ## le module interolate.py. 
 
 Ce module permet de donner un nombre plus petit (ou plus grand) de points dans le contour. 
 Par défaut, on donne 200 points, ce qui donne des temps de calculs résonnables. 
+
+![Contours Image](Pictures/contour_interpol.png)
+
+## le module lissage.py. 
+
+Ce module permet de lisser la courbe. 
+L'ordre va lisser plus ou moins cette courbe, il faut trouver une valeur qui ne lisse pas trop et qui soit bien représentative de la forme. 
+Le fait de lisser un contour va permettre de faciliter l'analyse de ce dernier en enlevant le bruit. 
+
+![Contours Image](Pictures/contour_liss.png)
+
+### A la fin du programme, les coordonnées x et y sont sauvées dans un fichier `.npy` 
+
+# le dossier Complex. 
+
+Ce dossier permet de comprendre les mathématiques liées aux tranformées de Fourier. 
+
+Les transformées de Fourier utilise les nombres complexes. 
+
+Le module `circleTrigo.py` permet de réaliser cette animation qui représente ce qu'est un nombre complexe. 
+
+![Contours Image](Pictures/nombre_complexes.gif)
+
+Un cercle est composé de 2 courbes : cosinus pour la variation en x et sinus pour la variation en y. 
+
+Un nombre complexe est représenté par :  
+
+- sa partie réelle (x). 
+- sa partie imaginaire (y). 
+
+En Python, on déclare un nombre complexe par : p = a + j b. 
+
+et se décompose par :  
+
+p.real = a. 
+
+p.imag = b. 
+
+On peut considérer que l'on fait un tour du contour. 
+
+Si le contour est uh cercle parfait alors a = b. 
+
+Si a est différent de b alors le contour est ovale. 
+
+Un nombre complexe est un vecteur de coordonnées `[real, imag]`. 
+
+Comme tout vecteur, il est caractérisé par :
+
+- son angle : 
+
+![Contours Image](Pictures/alpha.png)
+
+- son amplitude :
+
+![Contours Image](Pictures/amplitude.png)
+
+## le module symfitFourier.py. 
+
+Ce module permet de calculer les coeficients a et b sur une donnée quelconque. 
+
+Nous l'utiliserons pour comprendre une série de Fourier 1D. 
+
+
 
 
 
