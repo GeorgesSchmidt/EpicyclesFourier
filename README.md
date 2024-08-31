@@ -1,91 +1,91 @@
 # EpicyclesFourier
 
-Code pour dessiner les épicycles de Fourier et implémenter les transformées de Fourier en Python. 
+Code to draw Fourier epicycles and implement Fourier transforms in Python.
 
-Ce repo ne présente que le code pour implémenter diverses approches des transformées de Fourier en utilisant les modules scipy et numpy. 
+This repository only includes code to implement various approaches to Fourier transforms using the scipy and numpy modules.
 
-Il ne reprend aucun rappel mathématique. 
+It does not include any mathematical background or explanations.
 
-### LE README PRESENTE ICI COMPORTE DES ANIMATIONS GIF. MERCI DE PATIENTER SON CHARGEMENT, CELA PEUX PRENDRE QUELQUES SECONDES ###
+### THE README PRESENTED HERE INCLUDES GIF ANIMATIONS. PLEASE WAIT FOR IT TO LOAD, THIS MAY TAKE A FEW SECONDS ###
 
 # installation. 
 
-Dans un environnement virtuel :  
+In a virtual environment :  
 
 `pip install opencv-python matplotlib scipy`
 
-# le module contours.py. 
+# The contours.py Module. 
 
-Ce module permet de rechercher le contour de l'objet d'une image. Il contient la classe mère Contours. 
+This module allows you to find the contour of an object in an image. It contains the base class Contours.
 
-OpenCV permet de trouver ce contour après une légère transformation de l'image :
-l'image doit être binaire (noir ou blanc et non pas en variation de gris). 
-l'objet doit être blanc sur un fond noir. 
+OpenCV is used to find this contour after a slight transformation of the image:
 
-Si l'on affiche le contour sur l'image, on observe cela :
+The image must be binary (black or white, not grayscale).
+The object should be white on a black background.
+If we display the contour on the image, it looks like this:  
 
 ![Contours Image](Pictures/image_originale.png)
 
-D'une part le contour présente beaucoup de points ce qui ralentira le temps de calcul des coeficients de Fourier et, d'autre part, le contour n'est pas lisse. 
+On the one hand, the contour has many points, which will slow down the computation time for the Fourier coefficients, and on the other hand, the contour is not smooth.
 
-Le module `contours.py` va interpoler le contour de manière à lui donner un nombre de points plus petit (ici 200) avec la fonction `np.interp` et lisser la courbe avec la méthode `signal de scipy`. 
+The `contours.py` module will interpolate the contour to reduce the number of points (in this case, 200) using the np.interp function and smooth the curve with the signal method from scipy.  
 
 ![Contours Image](Pictures/resultat_contour.png)
 
-# Le module epicycles.py. 
+# The epicycles.py Module
 
-La classe Epicycle hérite de Contours, on peux donc lancer le programme directement par ce module. 
+The Epicycle class inherits from Contours, so you can run the program directly through this module.
 
-Ce programme calcule les coeficients de Fourier nécessaires aux épicyles puis lance l'animation matplotlib. 
+This program calculates the Fourier coefficients needed for the epicycles and then starts the matplotlib animation.
 
-Pour calculer ces coeficients, il faut préalablement décomposer les coordonnées x et y des points du contours. 
+To calculate these coefficients, you first need to decompose the x and y coordinates of the contour points.
 
 ![Contours Image](Pictures/epicycles.png)
 
 
-En changeant l'ordre, c'est-à-dire le nombre de coeficients, on risque de trop lisser la courbe résultante. 
+By changing the order, i.e., the number of coefficients, you might over-smooth the resulting curve.
 
-A essayer avec un ordre plus petit (ex 3). 
+Try using a smaller order (e.g., 3).
 
-Le programme lance ensuite l'animation matplotlib pour observer les épicycles. 
+The program then starts the matplotlib animation to observe the epicycles.
 
 ![Animation epicyles](Pictures/animation_readme.gif)
 
-# Utiliser une FFT : le module transformeeFourier.py
+# Using an FFT: The transformeeFourier.py Module
 
-Si l'objectif du programme est d'approcher mathématiquement le contour, la Fast Fourier Transform (FFT) est plus appropriée car beaucoup plus rapide dans le calcul des coeficients. 
+If the goal of the program is to mathematically approximate the contour, the Fast Fourier Transform (FFT) is more appropriate because it is much faster at calculating the coefficients.
 
-Pour calculer une FFT, scipy propose la méthode fft pour calculer les coeficients de Fourier et ifft pour calculer l'inverse et donc récupérer la courbe à partir des coeficients calculés. 
+To calculate an FFT, scipy offers the fft method to compute the Fourier coefficients and ifft to calculate the inverse and thus recover the curve from the calculated coefficients.
 
-Les coeficients calculés sont des nombres complexes. On peut alors afficher leurs amplitudes et proposer un seuil sous lequel tous les coeficients seront nuls. 
+The calculated coefficients are complex numbers. We can then display their amplitudes and set a threshold below which all coefficients will be zero.
 
-Avec autant de coeficients que de points, la courbe résultante est parfaitement collée à la courbe originale. 
+With as many coefficients as points, the resulting curve perfectly matches the original curve.
 
-Pour autant, avec moins de coeficients (jusqu'à une ceraine limite), la courbe résultante est toujours représentative de la courbe originale. 
+However, even with fewer coefficients (up to a certain limit), the resulting curve remains representative of the original curve.
 
 ![Animation epicyles](Pictures/animation_readme_fft.gif)
 
-# Utiliser une 2D-DFT sur des images : le module imageFourier.py. 
+# Using a 2D-DFT on Images: The imageFourier.py Module
 
-Ce type de modélisation est très utilisée en traitement d'image. Elle permet de calculer la transformée de Fourier sur une matrice. 
+This type of modeling is widely used in image processing. It allows you to compute the Fourier transform on a matrix.
 
-L'image a fournir est donc une image en noir et blanc. 
+The image provided should be black and white.
 
-Dans notre cas, l'image ne contient que des pixels noirs ou des pixels blancs. 
+In our case, the image contains only black or white pixels.
 
-En appliquant une 2D-DFT, fournie par OpenCv, on calcule l'image spectrale, représentée ici en 3D qui est la représentation des amplitudes des coeficients de Fourier trouvés. 
+By applying a 2D-DFT, provided by OpenCV, we compute the spectral image, represented here in 3D, which is the representation of the amplitudes of the Fourier coefficients found.
 
-On applique alors un masque, représenté par un rectangle noir, d'une dimension donnée, où tous les coeficients en dehors de ce masque seront nuls. 
+We then apply a mask, represented by a black rectangle of a given size, where all coefficients outside this mask will be set to zero.
 
-Si le masque est aussi grand que l'image :
+If the mask is as large as the image:
 
 ![Contours Image](<Pictures/image_DFT_[50, 50].png>)
 
-Si le masque est deux fois plus petit :
+If the mask is twice as small:
 
 ![alt text](<Pictures/image_DFT_[25, 25].png>)
 
-Si le masque est 10 fois plus petit :
+If the mask is 10 times smaller:
 
 ![alt text](<Pictures/image_DFT_[5, 5].png>)
 
